@@ -30,3 +30,12 @@ tests = [
 ]
 
 test(tests, false)
+
+puts "\nTests Done!\n -- User Tests Section"
+
+loop do
+  print "\nWord: "
+  userWord = gets
+  t = DFAT.new(userWord)
+  t.run()
+end

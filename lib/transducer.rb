@@ -3,7 +3,7 @@ require 'set'
 
 class DFAT # Deterministic Finite Automaton Transducer
   def initialize(word)
-    @word = word
+    @word = word.upcase.strip
     @alphabet = Set[:I, :V, :X, :L, :C, :D, :M, :""]
     setup()
   end
