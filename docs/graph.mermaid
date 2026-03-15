@@ -1,0 +1,90 @@
+stateDiagram-v2
+    [*] --> q0
+
+    %% THOUSANDS
+    q0   --> qM    : M / +1000
+    qM   --> qMM   : M / +1000
+    qMM  --> qMMM  : M / +1000
+
+    %% HUNDREDS — entrada direta
+    q0    --> qC : C / +100
+    qM    --> qC : C / +100
+    qMM   --> qC : C / +100
+    qMMM  --> qC : C / +100
+
+    q0    --> qD : D / +500
+    qM    --> qD : D / +500
+    qMM   --> qD : D / +500
+    qMMM  --> qD : D / +500
+
+    qC  --> qCC  : C / +100
+    qCC --> qCCC : C / +100
+
+    %% SUBTRATIVO de centenas
+    qC --> q_sub_h : D / +300
+    qC --> q_sub_h : M / +800
+
+    %% DEZENAS — entrada direta (representativo)
+    q0      --> qX : X / +10
+    qC      --> qX : X / +10
+    qCC     --> qX : X / +10
+    qCCC    --> qX : X / +10
+    qD      --> qX : X / +10
+    q_sub_h --> qX : X / +10
+
+    q0      --> qL : L / +50
+    qC      --> qL : L / +50
+    qCC     --> qL : L / +50
+    qCCC    --> qL : L / +50
+    qD      --> qL : L / +50
+    q_sub_h --> qL : L / +50
+
+    qX  --> qXX  : X / +10
+    qXX --> qXXX : X / +10
+
+    %% SUBTRATIVO de dezenas
+    qX --> q_sub_t : L / +30
+    qX --> q_sub_t : C / +80
+
+    %% UNIDADES — entrada direta (representativo)
+    q0      --> qI : I / +1
+    qX      --> qI : I / +1
+    qXX     --> qI : I / +1
+    qXXX    --> qI : I / +1
+    qL      --> qI : I / +1
+    q_sub_t --> qI : I / +1
+
+    q0      --> qV : V / +5
+    qX      --> qV : V / +5
+    qXX     --> qV : V / +5
+    qXXX    --> qV : V / +5
+    qL      --> qV : V / +5
+    q_sub_t --> qV : V / +5
+
+    qI  --> qII  : I / +1
+    qII --> qIII : I / +1
+
+    %% SUBTRATIVO de unidades
+    qI --> q_final : V / +3
+    qI --> q_final : X / +8
+
+    %% ACEITAÇÃO (ε em qualquer estado)
+    q0      --> [*] : ε
+    qM      --> [*] : ε
+    qMM     --> [*] : ε
+    qMMM    --> [*] : ε
+    qC      --> [*] : ε
+    qCC     --> [*] : ε
+    qCCC    --> [*] : ε
+    qD      --> [*] : ε
+    q_sub_h --> [*] : ε
+    qX      --> [*] : ε
+    qXX     --> [*] : ε
+    qXXX    --> [*] : ε
+    qL      --> [*] : ε
+    q_sub_t --> [*] : ε
+    qI      --> [*] : ε
+    qII     --> [*] : ε
+    qIII    --> [*] : ε
+    qV      --> [*] : ε
+    q_final --> [*] : ε
